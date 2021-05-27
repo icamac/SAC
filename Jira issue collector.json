@@ -1,0 +1,89 @@
+{
+	"id": "com.csiro.jira.collector",
+	"version": "1.0.0",
+	"name": "Jira Issue Collector",
+	"description": "Jira Issue Collector",
+	"newInstancePrefix": "IssueCollector",
+	"icon": "https://wac-cdn-2.atlassian.com/image/upload/f_auto,q_auto/dam/jcr:9bf17e0a-6c3c-499d-82f4-b8e426853db6/logos-jira%20software-icon-gradient-blue.svg",
+	"vendor": "CSIRO",
+	"eula": "",
+	"license": "",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "com-csiro-jira-issuecollector",
+			"url": "https://cloudstor.aarnet.edu.au/plus/s/LClDjJ0Y1Qb07dD/download",
+			"integrity": "",
+			"ignoreIntegrity": true
+		},
+		{
+			"kind": "builder",
+			"tag": "com-csiro-jira-issuecollector-builder",
+			"url": "https://cloudstor.aarnet.edu.au/plus/s/fpFtVMlubGf6LHy/download",
+			"integrity": "",
+			"ignoreIntegrity": true
+		}
+	],
+	"properties": {
+		"color": {
+			"type": "string",
+			"description": "Background color",
+			"default": "red"
+		},
+		"opacity": {
+			"type": "number",
+			"description": "Opacity",
+			"default": 1
+		},
+		"width": {
+			"type": "integer",
+			"default": 100
+		},
+		"height": {
+			"type": "integer",
+			"default": 100
+		},
+		"collectorId":{
+			"type":"string",
+			"description": "Issue Collector Id",
+			"default":""
+		}
+	},
+	"methods": {
+		"setColor": {
+			"description": "Sets the background color.",
+			"parameters": [
+				{
+					"name": "newColor",
+					"type": "string",
+					"description": "The new background color"
+				}
+			],
+			"body": "this.color = newColor;"
+		},
+		"getColor": {
+			"returnType": "string",
+			"description": "Returns the background color.",
+			"body": "return this.color;"
+		},
+		"setCollectorId": {
+			"description": "Sets the Jira Collector Id.",
+			"parameters": [
+				{
+					"name": "newCollectorId",
+					"type": "string",
+					"description": "The new Jira Collector Id"
+				}
+			],
+			"body": "this.collectorId = newCollectorId;"
+		},
+		"getCollectorId": {
+			"returnType": "string",
+			"description": "Returns the Jira Collector Id.",
+			"body": "return this.collectorId;"
+		}
+
+	},
+	"events": {
+	}
+}

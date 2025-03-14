@@ -3,11 +3,6 @@
 	template.innerHTML = `
 		<div class="sapEpmUiFormSection expandable expanded">
 			<div class="sapEpmUiFormSectionHeader">
-				<div class="sapEpmUiFormSectionExpandableIconContainer">
-					<button class="sapEpmUiFormSectionExpandableIcon">
-						<span data-sap-ui="__icon1017" data-sap-ui-render="" role="presentation" aria-hidden="true" aria-label="down" data-sap-ui-icon-content="" class="sapUiIcon sapUiIconMirrorInRTL" style="font-family: fpa-icons; transform: rotate(360deg); max-width: 360px;"></span>
-					</button>
-				</div>
 				<label class="sapEpmUiFormSectionTitle expandableTitle">CSSInject Properties</label>
 			</div>
 			<div class="sapEpmUiFormSectionItems">

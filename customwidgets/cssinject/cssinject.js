@@ -1,34 +1,52 @@
 (function() { 
 	let template = document.createElement("template");
-	template.innerHTML = `
-		<style id="dynamic-styles"></style>
-	`;
+	template.innerHTML = ``;  // No shadow DOM content here
 
 	class CSSInject extends HTMLElement {
 		constructor() {
 			super(); 
-			let shadowRoot = this.attachShadow({ mode: "open" });
-			shadowRoot.appendChild(template.content.cloneNode(true));
-
-			// Style element for dynamic CSS
-			this.dynamicStyle = shadowRoot.querySelector("#dynamic-styles");
-
-			this._props = {};
+			// No shadow root, so no need to attach shadow DOM
 		}
 
+		// Apply CSS when properties are updated
 		onCustomWidgetBeforeUpdate(changedProperties) {
-			this._props = { ...this._props, ...changedProperties };
+			if ("customCSS" in changedProperties) {
+				this._customCSS = changedProperties["customCSS"];
+			}
 		}
 
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("customCSS" in changedProperties) {
-				this.updateCustomCSS(changedProperties["customCSS"]);
+				this.updateGlobalCSS(this._customCSS);
+				this.dispatchEvent(new Event("onCSSChange"));
 			}
 		}
 
-		// Function to update custom CSS
-		updateCustomCSS(css) {
-			this.dynamicStyle.textContent = css;
+		// Updates the injected CSS in the global document
+		updateGlobalCSS(css) {
+			let styleTag = document.getElementById('custom-widget-styles');
+			
+			// Create a new style tag if it doesn't exist
+			if (!styleTag) {
+				styleTag = document.createElement('style');
+				styleTag.id = 'custom-widget-styles'; // Unique ID to avoid duplication
+				document.head.appendChild(styleTag);
+			}
+
+			// Set the CSS content
+			styleTag.textContent = css;
+		}
+
+		// Method: Set CSS (called by SAC)
+		setCustomCSS(css) {
+			this._customCSS = css;
+			this.updateGlobalCSS(css);
+			this.dispatchEvent(new Event("onCSSChange"));
+		}
+
+		// Method: Get CSS (called by SAC)
+		getCustomCSS() {
+			return this._customCSS;
 		}
 	}
 

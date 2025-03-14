@@ -38,12 +38,6 @@
 			this.querySelector("#builder_customCSS")
 				.addEventListener("input", this._handleInput.bind(this));
 
-			// Add toggle functionality for expand/collapse
-			const header = this.querySelector('.sapEpmUiFormSectionHeader');
-			const sectionItems = this.querySelector('.sapEpmUiFormSectionItems');
-			header.addEventListener('click', () => {
-				sectionItems.classList.toggle('hidden');
-			});
 		}
 
 		_handleInput(e) {

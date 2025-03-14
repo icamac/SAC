@@ -18,6 +18,7 @@
 			</div>
 		</div>
 		<style>
+		/* Custom styling if needed */
 		textarea {
 			width: 100%;
 			padding: 0.5em;
@@ -37,16 +38,15 @@
 	class CSSInjectBuilderPanel extends HTMLElement {
 		constructor() {
 			super();
-			this._shadowRoot = this.attachShadow({ mode: "open" });
-			this._shadowRoot.appendChild(template.content.cloneNode(true));
+			this.appendChild(template.content.cloneNode(true));
 
 			// Listen for input change on textarea
-			this._shadowRoot.getElementById("builder_customCSS")
+			this.querySelector("#builder_customCSS")
 				.addEventListener("input", this._handleInput.bind(this));
 
 			// Add toggle functionality for expand/collapse
-			const header = this._shadowRoot.querySelector('.sapEpmUiFormSectionHeader');
-			const sectionItems = this._shadowRoot.querySelector('.sapEpmUiFormSectionItems');
+			const header = this.querySelector('.sapEpmUiFormSectionHeader');
+			const sectionItems = this.querySelector('.sapEpmUiFormSectionItems');
 			header.addEventListener('click', () => {
 				sectionItems.classList.toggle('hidden');
 			});
@@ -63,11 +63,11 @@
 		}
 
 		set customCSS(newCSS) {
-			this._shadowRoot.getElementById("builder_customCSS").value = newCSS;
+			this.querySelector("#builder_customCSS").value = newCSS;
 		}
 
 		get customCSS() {
-			return this._shadowRoot.getElementById("builder_customCSS").value;
+			return this.querySelector("#builder_customCSS").value;
 		}
 	}
 

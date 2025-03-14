@@ -1,7 +1,7 @@
 (function() {
 	let template = document.createElement("template");
 	template.innerHTML = `
-		<div class="sapEpmUiFormSection expandable expanded">
+		<div class="sapEpmUiFormSection" style="margin:1.5rem">
 			<div class="sapEpmUiFormSectionHeader">
 				<label class="sapEpmUiFormSectionTitle expandableTitle">CSSInject Properties</label>
 			</div>

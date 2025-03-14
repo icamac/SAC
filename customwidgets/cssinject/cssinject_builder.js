@@ -3,11 +3,11 @@
 	template.innerHTML = `
 		<div class="sapEpmUiFormSection" style="margin:1.5rem">
 			<div class="sapEpmUiFormSectionHeader">
-				<label class="sapEpmUiFormSectionTitle expandableTitle">CSSInject Properties</label>
+				<label class="sapEpmUiFormSectionTitle expandableTitle">Custom CSS to Inject</label>
 			</div>
 			<div class="sapEpmUiFormSectionItems">
 				<div>
-					<textarea id="builder_customCSS" rows="20" style="width:100%; box-sizing: border-box;"></textarea>
+					<textarea id="builder_customCSS" rows="40" style="width:100%; box-sizing: border-box;"></textarea>
 				</div>
 			</div>
 		</div>

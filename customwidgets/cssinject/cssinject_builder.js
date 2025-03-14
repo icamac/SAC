@@ -10,7 +10,7 @@
 						<td><textarea id="builder_customCSS" rows="4" cols="40"></textarea></td>
 					</tr>
 				</table>
-				<input type="submit" style="display:none;">
+				<!-- Removed submit input as we won't rely on it -->
 			</fieldset>
 		</form>
 		<style>
@@ -26,11 +26,13 @@
 			super();
 			this._shadowRoot = this.attachShadow({ mode: "open" });
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
-			this._shadowRoot.getElementById("form").addEventListener("submit", this._submit.bind(this));
+
+			// Listen for input change on textarea
+			this._shadowRoot.getElementById("builder_customCSS")
+				.addEventListener("input", this._handleInput.bind(this));
 		}
 
-		_submit(e) {
-			e.preventDefault();
+		_handleInput(e) {
 			this.dispatchEvent(new CustomEvent("propertiesChanged", {
 				detail: {
 					properties: {

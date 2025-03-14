@@ -7,8 +7,7 @@
 			</div>
 			<div class="sapEpmUiFormSectionItems">
 				<div>
-					<span class="sapMLabel sapUiSelectable sapMLabelMaxWidth">Custom CSS</span>
-					<textarea id="builder_customCSS" rows="4" cols="40"></textarea>
+					<textarea id="builder_customCSS" rows="20" style="width:100%; box-sizing: border-box;"></textarea>
 				</div>
 			</div>
 		</div>

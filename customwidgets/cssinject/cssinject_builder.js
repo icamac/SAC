@@ -18,48 +18,6 @@
 			</div>
 		</div>
 		<style>
-		:host {
-			display: block;
-			padding: 1em;
-			font-family: SAP-icons, sans-serif;
-		}
-
-		.sapEpmUiFormSection {
-			border: 1px solid #ccc;
-			border-radius: 6px;
-			margin-bottom: 1em;
-		}
-
-		.sapEpmUiFormSectionHeader {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 0.5em;
-			background-color: #f1f1f1;
-			cursor: pointer;
-		}
-
-		.sapEpmUiFormSectionExpandableIconContainer button {
-			background: none;
-			border: none;
-			cursor: pointer;
-		}
-
-		.sapEpmUiFormSectionTitle {
-			font-weight: bold;
-			font-size: 1.1em;
-		}
-
-		.sapEpmUiFormSectionItems {
-			padding: 1em;
-			display: block;
-		}
-
-		.sapMLabel {
-			display: inline-block;
-			font-weight: 600;
-		}
-
 		textarea {
 			width: 100%;
 			padding: 0.5em;

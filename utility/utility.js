@@ -64,7 +64,7 @@ class Utility extends HTMLElement {
 	                        subValue = subValue ? subValue[subProp] : undefined;
 	                    }
 	                    return subValue ?? null;
-	                }).join(', ');  // Join the array values into a single string
+	                }).join(';');  // Join the array values into a single string
 	            } else {
 	                // If not an array, continue traversing the properties as usual
 	                value = value ? value[prop] : undefined;

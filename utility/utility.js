@@ -36,31 +36,6 @@ class Utility extends HTMLElement {
 		return "Unknown";
 	}
 
-	// Map an array of objects to a string array based on the given property
-	mapProperty(array, property) {
-	    if (!array) {
-	        return [];
-	    }
-	
-	    if (!Array.isArray(array)) {
-	        throw new Error("mapProperty: The first argument must be an array.");
-	    }
-	
-	    // Safely map the top-level property for each item in the array
-	    return array.map(item => {
-	        // Directly access the top-level property
-	        const value = item ? item[property] : undefined;
-	
-	        // If the value is an array, join it as a string (if it contains simple values)
-	        if (Array.isArray(value)) {
-	            return value.join(', ');
-	        }
-	
-	        // Return the value or null if undefined
-	        return value ?? null;
-	    });
-	}
-
 	getMethods() {
 		return this._methods;
 	}

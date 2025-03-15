@@ -28,15 +28,16 @@ class Utility extends HTMLElement {
 	}
 
 	// Determine the environment based on the host
-	getEnvironment() {
-		const host = window.location.host;
+getEnvironment() {
+    const host = window.location.host;
+    const subdomain = host.split(".")[0]; // Extracts the first part of the hostname
 
-		if (host.includes("csiro-q.ap10.hcs.cloud.sap")) return "Dev";
-		if (host.includes("csiro-q-1")) return "QA";
-		if (host.includes("csiro-1")) return "Prod";
+    if (subdomain === "csiro-q") return "Dev";
+    if (subdomain === "csiro-q-1") return "QA";
+    if (subdomain === "csiro-1") return "Prod";
 
-		return "Unknown";
-	}
+    return "Unknown";
+}
 
 	// Expose methods for SAC
 	getMethods() {

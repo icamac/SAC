@@ -57,6 +57,11 @@ class Utility extends HTMLElement {
 	            value = value ? value[prop] : undefined;
 	        }
 	
+	        // If the property value is an array, join it into a string
+	        if (Array.isArray(value)) {
+	            return value.join(', ');
+	        }
+	
 	        // Return the property value or null if not found
 	        return value ?? null;
 	    });

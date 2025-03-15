@@ -5,7 +5,6 @@ class Utility extends HTMLElement {
 	}
 
 	_init() {
-		// Expose methods for SAC scripting
 		this._methods = {
 			generateUUID: this.generateUUID.bind(this),
 			formatDate: this.formatDate.bind(this),
@@ -13,12 +12,10 @@ class Utility extends HTMLElement {
 		};
 	}
 
-	// Generate a UUID
 	generateUUID() {
 		return crypto.randomUUID();
 	}
 
-	// Format a date into a specific format
 	formatDate(date, format) {
 		const d = new Date(date);
 		if (isNaN(d.getTime())) return "Invalid date";
@@ -27,19 +24,18 @@ class Utility extends HTMLElement {
 		return new Intl.DateTimeFormat("en-GB", options).format(d);
 	}
 
-	// Determine the environment based on the host
-getEnvironment() {
-    const host = window.location.host;
-    const subdomain = host.split(".")[0]; // Extracts the first part of the hostname
+	// Updated function to check only the subdomain
+	getEnvironment() {
+		const host = window.location.host;
+		const subdomain = host.split(".")[0]; // Extracts only the first part
 
-    if (subdomain === "csiro-q") return "Dev";
-    if (subdomain === "csiro-q-1") return "QA";
-    if (subdomain === "csiro-1") return "Prod";
+		if (subdomain === "csiro-q") return "Dev";
+		if (subdomain === "csiro-q-1") return "QA";
+		if (subdomain === "csiro-1") return "Prod";
 
-    return "Unknown";
-}
+		return "Unknown";
+	}
 
-	// Expose methods for SAC
 	getMethods() {
 		return this._methods;
 	}

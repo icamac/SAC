@@ -57,12 +57,20 @@ class Utility extends HTMLElement {
 	            value = value ? value[prop] : undefined;
 	        }
 	
-	        // If the property value is an array, join it into a string
+	        // If the value is an array of objects, extract the property from each object
 	        if (Array.isArray(value)) {
-	            return value.join(', ');
+	            // If the array contains objects, extract the specified property from each object
+	            return value.map(subItem => {
+	                // Traverse subItem for nested properties
+	                let subValue = subItem;
+	                for (let subProp of properties.slice(1)) {
+	                    subValue = subValue ? subValue[subProp] : undefined;
+	                }
+	                return subValue ?? null;
+	            }).join(', ');
 	        }
 	
-	        // Return the property value or null if not found
+	        // If not an array, simply return the value or null
 	        return value ?? null;
 	    });
 	}

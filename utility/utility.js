@@ -38,10 +38,28 @@ class Utility extends HTMLElement {
 
 	// Map an array of objects to a string array based on the given property
 	mapProperty(array, property) {
-		if (!Array.isArray(array)) return "Invalid input: Expected an array";
-		if (typeof property !== "string") return "Invalid input: Property must be a string";
-
-		return array.map(item => item[property] || null); // Return property values or null if missing
+	    if (!array) {
+	        return [];
+	    }
+	
+	    if (!Array.isArray(array)) {
+	        throw new Error("mapProperty: The first argument must be an array.");
+	    }
+	
+	    // Safely map the property for nested structures
+	    return array.map(item => {
+	        // Split the property path by "." to handle nested properties
+	        const properties = property.split('.');
+	        let value = item;
+	
+	        // Traverse the object to get the nested property
+	        for (let prop of properties) {
+	            value = value ? value[prop] : undefined;
+	        }
+	
+	        // Return the property value or null if not found
+	        return value ?? null;
+	    });
 	}
 
 	getMethods() {

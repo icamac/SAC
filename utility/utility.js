@@ -54,23 +54,24 @@ class Utility extends HTMLElement {
 	
 	        // Traverse the object to get the nested property
 	        for (let prop of properties) {
-	            value = value ? value[prop] : undefined;
+	            // Check if the current value is an array
+	            if (Array.isArray(value)) {
+	                // If it's an array, map through the array to extract the property from each object
+	                return value.map(subItem => {
+	                    // Check if the subItem is an object and traverse for the nested property
+	                    let subValue = subItem;
+	                    for (let subProp of properties.slice(1)) {
+	                        subValue = subValue ? subValue[subProp] : undefined;
+	                    }
+	                    return subValue ?? null;
+	                }).join(', ');  // Join the array values into a single string
+	            } else {
+	                // If not an array, continue traversing the properties as usual
+	                value = value ? value[prop] : undefined;
+	            }
 	        }
 	
-	        // If the value is an array of objects, extract the property from each object
-	        if (Array.isArray(value)) {
-	            // If the array contains objects, extract the specified property from each object
-	            return value.map(subItem => {
-	                // Traverse subItem for nested properties
-	                let subValue = subItem;
-	                for (let subProp of properties.slice(1)) {
-	                    subValue = subValue ? subValue[subProp] : undefined;
-	                }
-	                return subValue ?? null;
-	            }).join(', ');
-	        }
-	
-	        // If not an array, simply return the value or null
+	        // If the value is not found, return null
 	        return value ?? null;
 	    });
 	}

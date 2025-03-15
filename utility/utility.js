@@ -46,32 +46,17 @@ class Utility extends HTMLElement {
 	        throw new Error("mapProperty: The first argument must be an array.");
 	    }
 	
-	    // Safely map the property for nested structures
+	    // Safely map the top-level property for each item in the array
 	    return array.map(item => {
-	        // Split the property path by "." to handle nested properties
-	        const properties = property.split('.');
-	        let value = item;
+	        // Directly access the top-level property
+	        const value = item ? item[property] : undefined;
 	
-	        // Traverse the object to get the nested property
-	        for (let prop of properties) {
-	            // Check if the current value is an array
-	            if (Array.isArray(value)) {
-	                // If it's an array, map through the array to extract the property from each object
-	                return value.map(subItem => {
-	                    // Check if the subItem is an object and traverse for the nested property
-	                    let subValue = subItem;
-	                    for (let subProp of properties.slice(1)) {
-	                        subValue = subValue ? subValue[subProp] : undefined;
-	                    }
-	                    return subValue ?? null;
-	                }).join(';');  // Join the array values into a single string
-	            } else {
-	                // If not an array, continue traversing the properties as usual
-	                value = value ? value[prop] : undefined;
-	            }
+	        // If the value is an array, join it as a string (if it contains simple values)
+	        if (Array.isArray(value)) {
+	            return value.join(', ');
 	        }
 	
-	        // If the value is not found, return null
+	        // Return the value or null if undefined
 	        return value ?? null;
 	    });
 	}

@@ -28,6 +28,7 @@ class Utility extends HTMLElement {
 
 	getMethods() {
 		return this._methods;
+		debugger;
 	}
 }
 

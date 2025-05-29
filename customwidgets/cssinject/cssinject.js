@@ -32,7 +32,7 @@
 				styleTag.id = 'custom-widget-styles'; // Unique ID to avoid duplication
 				document.head.appendChild(styleTag);
 			}
-
+// Comment
 			// Set the CSS content
 			styleTag.textContent = css;
 		}
